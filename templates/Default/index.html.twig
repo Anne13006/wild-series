@@ -1,4 +1,7 @@
-{% include "base.html.twig" %}
+{% extends "base.html.twig" %}
+
+{% block body %}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,5 +10,8 @@
 </head>
 <body>
    <h1>{{ title }} </h1>
+   <img src="{{ asset('build/images/testimg.png') }}" alt="ACME image"/>
 </body>
 </html>
+
+{% endblock %}
