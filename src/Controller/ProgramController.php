@@ -11,6 +11,7 @@ Class ProgramController extends AbstractController
 {
     /**
      * @Route("/programs/", name="program_index")
+     * @return Response
      */
     public function index(): Response
     {
@@ -18,5 +19,18 @@ Class ProgramController extends AbstractController
             'website' => 'Wild Séries',
          ]);
     }
+
+    /**
+     * @Route("/programs/show/{id}/", requirements={"page"="\d+"}, name="program_show")
+     * @return Response
+     */
+
+    public function show(int $id = 1 ): Response
+    {
+        return $this->render('program/show.html.twig', [
+            'website' => 'Program show Wild Séries', 'id' => $id
+         ]);
+    }
+
 }
 
