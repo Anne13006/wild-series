@@ -4,7 +4,7 @@
       <!-- Logo Image -->
       <img style=width:70px src="{{ asset('build/images/01_Symfony_Logo_wildSeries.png')  }}">
       <!-- Logo Text -->
-  <a class="navbar-brand" href="#">Wild-Series</a>
+  <a class="navbar-brand" href="{{ path('app_index')}}">Wild-Series</a>
 
 <div class="dropdown">
   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -13,7 +13,7 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="#">Action</a>
     <a class="dropdown-item" href="#">Sci-Fi</a>
-   <a class="dropdown-item" href="#">Horreur</a>
+   <a class="dropdown-item" href="{{ path('categories_show',{categoryName: 'horreur'})}}">Horreur</a>
    <a class="dropdown-item" href="#">Other</a>
   </div>
 </div>
