@@ -1,14 +1,18 @@
 {% extends "base.html.twig" %}
 
+{% block title %} Série #{{ program.id }} {% endblock %}
+
 {% block body %}
-<!doctype html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   
-</head>
-<body>
-   <h1>{{ website }} Numero {{ id }} </h1>
-</body>
-</html>
+
+<div class="media">
+<img clas="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
+<div class="media-body">
+   <h1 class="mt-0"> {{ program.title }} </h1>
+   <p>{{ program.summary}}</p>
+   <p>Catégorie : {{ program.category.name }}</p>
+   </div>
+</div>
+<a href="{{ path('program_index')}}">
+Retour à la liste des programmes
+</a>
 {% endblock %}
