@@ -13,14 +13,13 @@
 
 
 
-<pre>
-   {{ dump() }}
-</pre>
+
    {% for season in seasons %}
   
   <div>  Saisons : 
-  <a href="/programs/{{program.id}}/season/{{season.id}}">Saison {{season.number}}</a>
-  {# <a href="{{ path('program_season_show',{programId: {{ program.number }}, {programId: {{ program.number }}   )}}"></a> #}
+  
+  <a href="{{ path('program_season_show', {"programId": program.id,"seasonId": season.id} )}}" > Saison detail{{season.number}}</a>
+  
    {{ season.number }} - {{ season.year }}
    program show season 
 </div>   
