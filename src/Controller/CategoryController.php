@@ -6,9 +6,11 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Category;
 use App\Entity\Program;
 use Doctrine\ORM\Mapping\Id;
+use App\Form\CategoryType;
 
 /**
  * *@Route("/categories", name="categories_")
@@ -32,6 +34,38 @@ class CategoryController extends AbstractController
         ]);
     }
 
+/**
+ * The controller for the category add form
+ *
+ * @Route("/new", name="new")
+ */
+public function new(Request $request) : Response
+    {
+        // Create a new Category Object
+        $category = new Category();
+        // Create the associated Form
+        $form = $this->createForm(CategoryType::class, $category);
+        // Get data from HTTP request
+        $form->handleRequest($request);
+        // Was the form submitted ?
+        if ($form->isSubmitted()) {
+            // Deal with the submitted data
+            // For example : persiste & flush the entity
+            // And redirect to a route that display the result
+            $entityManager = $this->getDoctrine()->getManager();
+            // Persist Category Object
+            $entityManager->persist($category);
+            // Flush the persisted object
+            $entityManager->flush();
+            // Finally redirect to categories list
+            return $this->redirectToRoute('categories_index');   
+        
+        
+        }
+        // Render the form
+        return $this->render('Category/new.html.twig', ["form" => $form->createView()]);
+    }
+
      /**
      * @Route("/show/{categoryName}", name="show")
      * @return Response
@@ -51,12 +85,13 @@ class CategoryController extends AbstractController
         $programs = $this->getDoctrine()->getRepository(Program::class)
         ->findBy(['category'=>$categories->getId()], ['id' => 'DESC'],$limit=3);
 
-        //dd($programs);
 
         return $this->render('Category/show.html.twig', [
             'categories' => $categories, 'programs' => $programs,
          ]);
     }
+
+
 
 
 }
