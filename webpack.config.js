@@ -78,7 +78,7 @@ Encore
     // Set the path the files are copied to
     .copyFiles({
         from: './assets/images',
-        pattern: /\.(png|jpg|jpeg)$/,
+        pattern: /\.(png|jpg|jpeg|ico)$/,
         // to path is relative to the build directory
         to: 'images/[path][name].[ext]'
 })
