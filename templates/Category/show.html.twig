@@ -5,11 +5,13 @@
 {% block body %}
 
 <div class="media">
-Last Program in Category {{ categories.name }}
+<h2> List Program in Category : ** {{ categories.name }} ** </h2>
+</div>
 
 {% for program in programs %}
-<h1> {{ program.title }} </h1> 
-
+<div>
+<h3> {{ program.title }} </h3> 
+</div>
    
 {% endfor %}
 </div>

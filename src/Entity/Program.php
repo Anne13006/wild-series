@@ -6,11 +6,18 @@ use App\Repository\ProgramRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+
 
 /**
  * @ORM\Entity(repositoryClass=ProgramRepository::class)
+ * @Assert\EnableAutoMapping()
+ * @UniqueEntity(fields={"title"}, message="title is already taken.")
  */
-class Program
+
+ class Program
 {
     /**
      * @ORM\Id
@@ -20,12 +27,15 @@ class Program
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Program title should not be EMPTY")
+     * @Assert\Length(max="25", maxMessage="Nom saisie {{ value }} est trop longue, ne doit pas dépasser {{ limit }}caractères")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Le résumé du Programme ne doit pas etre vide svp")
      */
     private $summary;
 
