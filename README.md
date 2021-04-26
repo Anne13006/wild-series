@@ -3,7 +3,6 @@ WS Symfony Quests wild series creation
 
 Create Symfony Project. 
 
-
 ..
 
 git clone
@@ -16,5 +15,7 @@ composer install
 
 yarn install
 
+code . 
 
+symfony serve
 
