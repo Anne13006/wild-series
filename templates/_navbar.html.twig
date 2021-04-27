@@ -11,9 +11,10 @@
     Category
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
+   <a class="dropdown-item" href="{{ path('categories_show',{categoryName: 'Action'})}}">Action</a>
     <a class="dropdown-item" href="#">Sci-Fi</a>
    <a class="dropdown-item" href="{{ path('categories_show',{categoryName: 'horreur'})}}">Horreur</a>
+   <a class="dropdown-item" href="{{ path('categories_show',{categoryName: 'Adventure'})}}">Adventure</a>
    <a class="dropdown-item" href="#">Other</a>
   </div>
 </div>
